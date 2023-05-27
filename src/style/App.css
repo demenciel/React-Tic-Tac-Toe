@@ -1,0 +1,129 @@
+body {
+  background-color: #2D3E50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-top: 10%;
+  width: 900px;
+  height: 900px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+}
+
+.boardButton {
+  height: 20%;
+  padding-top: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonGame:hover {
+  cursor: pointer;
+}
+
+.buttonGameActive {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 30px rgba(169, 47, 47, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.buttonGame {
+  width: 25%;
+  height: 45px;
+  text-transform: uppercase;
+  color: white;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 0.1px solid rgba(255, 255, 255, 0.3);
+}
+
+.row {
+  height: 33%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.cell {
+  width: 33%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cell:hover {
+  cursor: pointer;
+}
+
+.active {
+  width: 33%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.cross {
+  position: relative;
+  width: 50%;
+  height: 50%;
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 6px;
+  border-radius: 15px; /* Adjust based on how thick you want your lines to be */
+  background: white;
+  top: 50%;
+}
+
+.cross::before {
+    transform: rotate(45deg);
+    animation: drawLine 0.5s forwards;
+}
+
+.cross::after {
+    transform: rotate(-45deg);
+    animation: drawLine 0.5s 0.5s forwards;
+}
+
+@keyframes drawLine {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.circle {
+    content: '';
+    position: relative;
+    width: 50%;
+    height: 50%;
+    margin-left: 0%;
+    margin-top: 0%;
+    border: 2px solid white;
+    border-radius: 50%;
+    animation: drawCircle 0.5s forwards;
+}
+
+@keyframes drawCircle {
+  0% { border-width: 0; }
+  100% { border-width: 6px; }
+}
