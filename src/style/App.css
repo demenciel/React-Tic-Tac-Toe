@@ -1,3 +1,4 @@
+
 body {
   background-color: #2D3E50;
   display: flex;
@@ -5,11 +6,35 @@ body {
   align-items: center;
 }
 
+.view {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/* ANIMATIONS */
+
+@keyframes drawLine {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+@keyframes drawCircle {
+  0% { border-width: 0; }
+  100% { border-width: 6px; }
+}
+
+/* BOARD COMPONENTS */
+.board {
+  padding: 0 10%;
+}
+
 .rows {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  margin-top: 10%;
   width: 900px;
   height: 900px;
   background: rgba(255, 255, 255, 0.03);
@@ -51,6 +76,8 @@ body {
   border: 0.1px solid rgba(255, 255, 255, 0.3);
 }
 
+
+/* ROWS */
 .row {
   height: 33%;
   width: 100%;
@@ -58,6 +85,7 @@ body {
   justify-content: space-evenly;
 }
 
+/* CELLS */
 .cell {
   width: 33%;
   height: 100%;
@@ -79,6 +107,7 @@ body {
   -webkit-backdrop-filter: blur(5px);
 }
 
+/* TOKENS */
 .cross {
   position: relative;
   width: 50%;
@@ -106,24 +135,30 @@ body {
     animation: drawLine 0.5s 0.5s forwards;
 }
 
-@keyframes drawLine {
-  0% { width: 0; }
-  100% { width: 100%; }
-}
-
 .circle {
-    content: '';
-    position: relative;
-    width: 50%;
-    height: 50%;
-    margin-left: 0%;
-    margin-top: 0%;
-    border: 2px solid white;
-    border-radius: 50%;
-    animation: drawCircle 0.5s forwards;
+  content: '';
+  position: relative;
+  width: 50%;
+  height: 50%;
+  margin-left: 0%;
+  margin-top: 0%;
+  border: 2px solid white;
+  border-radius: 50%;
+  animation: drawCircle 0.5s forwards;
 }
 
-@keyframes drawCircle {
-  0% { border-width: 0; }
-  100% { border-width: 6px; }
+/* PLAYER SCORES */
+
+.scoresHeader {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: white;
+  font-size: 128px;
+}
+
+.scoresCount {
+  text-transform: uppercase;
+  font-weight: 400;
+  color: white;
+  font-size: 32px;
 }
