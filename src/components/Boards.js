@@ -73,13 +73,9 @@ const Board = () => {
 
     return (
         <div className='view'>
+            <h1 className='appHeader'>TIC TAC TOE</h1>
             <Win
                 win={win}
-            />
-            <PlayerScores
-                player={'X'} 
-                win={win}
-                score={score1}
             />
             <div className='board'>
                 <div className='rows' onClick={updateGame}>
@@ -123,11 +119,18 @@ const Board = () => {
                     <Button onClick={buttonClicked} />
                 </div>
             </div>
-            <PlayerScores 
-                player={'O'} 
-                win={win}
-                score={score2}
-            />
+            <div className='scores'>
+                <PlayerScores
+                    player={'X'} 
+                    win={win}
+                    score={score1}
+                />
+                <PlayerScores 
+                    player={'O'} 
+                    win={win}
+                    score={score2}
+                />
+            </div>  
         </div>
         
     )
