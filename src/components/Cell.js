@@ -48,8 +48,9 @@ const Cell = (props) => {
     };
 
     return (
-        <div className={`cell ${active ? 'active' : ''}`} style={props.style} onClick={handleClick}>
-            <div className={`${circle ? 'circle' : cross ? 'cross' : ''}`}>
+        <div className={`container ${active ? 'active' : ''}`} style={props.style} onClick={handleClick}>
+            <div className='cell'>
+            <div className={`${circle ? 'circle' : cross ? 'cross' : ''}`}></div>
             </div>
         </div>
     );
