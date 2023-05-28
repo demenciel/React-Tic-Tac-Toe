@@ -260,4 +260,7 @@ body {
     width: 50%;
     height: 50%;
   }
+  .winMessage {
+    font-size: 50%;
+  }
 }
