@@ -20,19 +20,13 @@ const Cell = (props) => {
     
     function updateMap(sign) {
         let gameCopy = [...props.game];
-        if (gameCopy[props.row][props.cell] === null)
-        {
             gameCopy[props.row][props.cell] = sign;
             props.setGame(gameCopy);
             props.checkForWin(gameCopy);
-
-        }
-        else
-            return;
     }
 
     const handleClick = () => {
-        if (props.win !== null) {
+        if (props.game[props.row][props.cell] !== null || props.win !== null) {
             return ;
         }
         setActive(!active);
