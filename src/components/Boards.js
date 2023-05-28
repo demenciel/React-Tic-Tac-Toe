@@ -1,6 +1,7 @@
 import '../style/App.css';
 import Row from './Row'
 import Button from './Button';
+import Win from './Win';
 import React, { useState, useEffect } from 'react';
 import PlayerScores from './PlayerScores';
 
@@ -17,14 +18,12 @@ const Board = () => {
     var [score2, setScore2] = useState(0);
 
     // when win, effect happens
-    useEffect(() => {
+    useEffect(() => { 
         if (win === 1) {
             setScore1(score1 + 1);
-            resetGame();
         } 
         else if (win === 0) {
             setScore2(score2 + 1);
-            resetGame();
         }
     }, [win]);
 
@@ -74,6 +73,9 @@ const Board = () => {
 
     return (
         <div className='view'>
+            <Win
+                win={win}
+            />
             <PlayerScores
                 player={'X'} 
                 win={win}

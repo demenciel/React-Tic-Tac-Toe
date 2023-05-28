@@ -20,14 +20,19 @@ const Cell = (props) => {
     
     function updateMap(sign) {
         let gameCopy = [...props.game];
-        gameCopy[props.row][props.cell] = sign;
-        props.setGame(gameCopy);
-        props.checkForWin(gameCopy);
+        if (gameCopy[props.row][props.cell] === null)
+        {
+            gameCopy[props.row][props.cell] = sign;
+            props.setGame(gameCopy);
+            props.checkForWin(gameCopy);
+
+        }
+        else
+            return;
     }
 
     const handleClick = () => {
         if (props.win !== null) {
-            props.reset();
             return ;
         }
         setActive(!active);
@@ -36,15 +41,15 @@ const Cell = (props) => {
         }, 300);
         if (props.playerTurn % 2 === 0)
         {
+            updateMap('x');
             setCircle(false);
             setCross(true);
-            updateMap('x');
         }
         else
         {
+            updateMap('o');
             setCircle(true);
             setCross(false);
-            updateMap('o');
         };
     };
 
