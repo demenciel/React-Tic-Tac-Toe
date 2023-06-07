@@ -14,7 +14,7 @@ const Win = (props) => {
         setShow(!show);
     }, [props.win]);
     return (
-        <div className={`winMessage ${show ? '' : 'show'}`}>
+        <div className={`winMessage ${show ? '' : 'showWin'}`}>
             <h1 className="winHeader">{player} Has Won !</h1>
             <h2>Click on New Game to start a new game</h2>
         </div>

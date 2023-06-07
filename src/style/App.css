@@ -213,7 +213,7 @@ body {
 }
 
 
-.show {
+.showWin {
   display: flex;
   animation: showWinningMessage 1s;
 }

@@ -20,9 +20,9 @@ const Cell = (props) => {
     
     function updateMap(sign) {
         let gameCopy = [...props.game];
-            gameCopy[props.row][props.cell] = sign;
-            props.setGame(gameCopy);
-            props.checkForWin(gameCopy);
+        gameCopy[props.row][props.cell] = sign;
+        props.setGame(gameCopy);
+        props.checkForWin(gameCopy);
     }
 
     const handleClick = () => {

@@ -69,7 +69,13 @@ const Board = () => {
             setWin(1);
         else if (gameCopy[0][2] === 'o' && gameCopy[1][1] === 'o' && gameCopy[2][0] === 'o')
             setWin(0);
-    }
+    };
+
+    function checkForNull(gameCopy) {
+        for (let i = 0; i < gameCopy[i].length; i++) {
+              
+        }
+    };
 
     return (
         <div className='view'>
