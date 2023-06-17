@@ -19,4 +19,15 @@ export function checkForWin(gameCopy, setWin) {
         setWin(1);
     else if (gameCopy[0][2] === 'o' && gameCopy[1][1] === 'o' && gameCopy[2][0] === 'o')
         setWin(0);
+    
 };
+
+export function nullGame(game, setWin) {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (game[i][j] !== null)
+                return ;
+        }
+    }
+    setWin(2);
+}
