@@ -5,13 +5,14 @@ const Row = (props) => {
     return (
         <div style={props.style} className='row'>
             <Cell 
-                cell={0} 
+                cell={0}
+                aiTurn={props.aiTurn}
                 row={props.row} 
                 game={props.game} 
                 setGame={props.setGame} 
                 checkForWin={props.checkForWin}
                 win={props.win}
-                updateGame={props.updateGame} 
+                updateMap={props.updateMap}
                 playerTurn={props.playerTurn}
                 reset={props.reset}
                 button={props.button}
@@ -19,12 +20,13 @@ const Row = (props) => {
                 />
             <Cell 
                 cell={1} 
+                aiTurn={props.aiTurn}
                 row={props.row} 
                 game={props.game} 
                 setGame={props.setGame} 
                 checkForWin={props.checkForWin}
                 win={props.win}
-                updateGame={props.updateGame} 
+                updateMap={props.updateMap}
                 playerTurn={props.playerTurn}
                 reset={props.reset}
                 button={props.button}
@@ -32,12 +34,13 @@ const Row = (props) => {
                 />
             <Cell
                 cell={2} 
+                aiTurn={props.aiTurn}
                 row={props.row} 
                 game={props.game} 
                 setGame={props.setGame}
                 checkForWin={props.checkForWin}
                 win={props.win}
-                updateGame={props.updateGame} 
+                updateMap={props.updateMap}
                 playerTurn={props.playerTurn}
                 reset={props.reset}
                 button={props.button}

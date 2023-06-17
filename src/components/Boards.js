@@ -4,6 +4,8 @@ import Button from './Button';
 import Win from './Win';
 import React, { useState, useEffect } from 'react';
 import PlayerScores from './PlayerScores';
+import { aiTurn } from '../aiLogic';
+import { checkForWin } from '../checkStateGame';
 
 const Board = () => {
     var [playerTurn, setPlayerTurn] = useState(0);
@@ -27,9 +29,24 @@ const Board = () => {
         }
     }, [win]);
 
-    const updateGame = () => {
+    // at each change on playerTurn, aiTurn function start
+    useEffect(()=> {
+        aiTurn(game, updateMap, playerTurn, win);
+    }, [playerTurn]);
+
+    /**
+     * @brief Updates the state of the map
+     * @param {*} sign the sign to be put on the map 
+     * @param {*} i i position
+     * @param {*} j j position
+     */
+    function updateMap(sign, i, j) {
+        let gameCopy = [...game];
+        gameCopy[i][j] = sign;
+        setGame(gameCopy);
+        checkForWin(gameCopy, setWin);
         setPlayerTurn(playerTurn + 1);
-    };
+    }
     
     const resetGame = () => {
         setGame([
@@ -46,36 +63,6 @@ const Board = () => {
         resetGame();
     };
 
-    function checkForWin(gameCopy) {
-        // check for Wins rows
-        for (let i = 0; i < 3; i++) {
-            if (gameCopy[i][0] === 'x' && gameCopy[i][1] === 'x' && gameCopy[i][2] === 'x')
-                setWin(1);
-            else if (gameCopy[i][0] === 'o' && gameCopy[i][1] === 'o' && gameCopy[i][2] === 'o')
-                setWin(0);
-        }
-        for (let i = 0; i < 3; i++) {
-            if (gameCopy[0][i] === 'x' && gameCopy[1][i] === 'x' && gameCopy[2][i] === 'x')
-                setWin(1);
-            else if (gameCopy[0][i] === 'o' && gameCopy[1][i] === 'o' && gameCopy[2][i] === 'o')
-                setWin(0);
-        }
-        // Check for wins diagonal
-        if (gameCopy[0][0] === 'x' && gameCopy[1][1] === 'x' && gameCopy[2][2] === 'x')
-            setWin(1);
-        else if (gameCopy[0][0] === 'o' && gameCopy[1][1] === 'o' && gameCopy[2][2] === 'o')
-            setWin(0);
-        if (gameCopy[0][2] === 'x' && gameCopy[1][1] === 'x' && gameCopy[2][0] === 'x')
-            setWin(1);
-        else if (gameCopy[0][2] === 'o' && gameCopy[1][1] === 'o' && gameCopy[2][0] === 'o')
-            setWin(0);
-    };
-
-    function checkForNull(gameCopy) {
-        for (let i = 0; i < gameCopy[i].length; i++) {
-              
-        }
-    };
 
     return (
         <div className='view'>
@@ -84,7 +71,7 @@ const Board = () => {
                 win={win}
             />
             <div className='board'>
-                <div className='rows' onClick={updateGame}>
+                <div className='rows'>
                     <Row 
                         row={0} 
                         game={game} 
@@ -92,7 +79,7 @@ const Board = () => {
                         checkForWin={checkForWin}
                         win={win}
                         playerTurn={playerTurn} 
-                        updateGame={updateGame}
+                        updateMap={updateMap}
                         reset={resetGame}
                         button={button}
                         style={{borderBottom: "1px solid rgba(255, 255, 255, 0.3)"}}
@@ -104,7 +91,7 @@ const Board = () => {
                         checkForWin={checkForWin}
                         win={win}
                         playerTurn={playerTurn} 
-                        updateGame={updateGame}
+                        updateMap={updateMap}
                         reset={resetGame}
                         button={button}
                         style={{borderBottom: "1px solid rgba(255, 255, 255, 0.3)"}}
@@ -116,7 +103,7 @@ const Board = () => {
                         checkForWin={checkForWin}
                         win={win}
                         playerTurn={playerTurn} 
-                        updateGame={updateGame} 
+                        updateMap={updateMap}
                         reset={resetGame}
                         button={button}
                     />
